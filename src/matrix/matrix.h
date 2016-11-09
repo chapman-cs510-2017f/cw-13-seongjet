@@ -2,7 +2,7 @@
 typedef unsigned int MINDEX;
 typedef long double MVALUE;
 
-// Use abstract types inside matrix definition for robustness
+// Use abstract types inside definition for robustness
 typedef struct matrix {
   MINDEX rows;
   MINDEX cols;
