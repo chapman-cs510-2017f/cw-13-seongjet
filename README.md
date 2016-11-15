@@ -42,6 +42,7 @@ Complete the following exercises, saving your solutions in the indicated files.
     1. Explain what the "Rule of Zero" is, and how it relates to the "Rule of Three"
     1. Finish implementing the missing functions in a sensible way. Be sure to fix the bug so that the depth field is used properly.
     1. Make sure that ```test_struct``` in the ```test/``` folder compiles and runs correctly after you are finished implementing ```Struct```.
+    1. Use [valgrind](http://valgrind.org/docs/manual/quick-start.html) to verify that you have no memory leaks in your working program. (You will have to edit the primary Makefile to change the CXXFLAGS to enable -g for debugging.)
     1. Fix the code so that it throws an exception properly if one tries to pop an empty stack.
     1. Fix the code so that depth cannot increase beyond the [numerical limit for size_t](http://en.cppreference.com/w/cpp/types/numeric_limits/max). Create a new method ```bool full()``` that checks if your Stack is full. Throw an exception properly if you try to push an item onto a full stack.
 
