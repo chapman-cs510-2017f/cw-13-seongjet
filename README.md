@@ -36,6 +36,7 @@ Complete the following exercises, saving your solutions in the indicated files.
     1. Explain what size_t is used for
     1. Explain why this code avoids the use of C pointers
     1. Explain what new and delete do in C++, and how they relate to what you have done in C
+    1. Explain what a memory leak is, and what you should do to avoid it
     1. Explain what a unique_ptr is and how it relates to both new and C pointers
     1. Explain what a list initializer does
     1. Explain what the "Rule of Zero" is, and how it relates to the "Rule of Three"
