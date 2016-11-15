@@ -5,16 +5,15 @@
 .PHONY : test clean
 
 # Sets default compiler options
-export CC = gcc
-export CFLAGS = -Wall -O2
+export CXX = g++
+export CXXFLAGS = -Wall -O2
 # Change to flags below for debugging with gdb
-#export CFLAGS = -Wall -O0 -g
+#export CXXFLAGS = -Wall -O0 -g
 
 # Default target: this is executed if nothing else is specified
 # As written, this descends into subdirectories src and test
 # and executes "make" in those directories, respectively
 all:
-	mkdir -p bin
 	$(MAKE) -C src/
 	$(MAKE) -C test/
 
@@ -28,5 +27,4 @@ clean:
 	$(MAKE) -C test/ clean
 
 cleaner: clean
-	rm -f bin/*
 	$(MAKE) -C test/ cleaner

@@ -1,9 +1,11 @@
 # Makefile for main src
 
 all:
-	$(MAKE) -C matrix/
+	$(MAKE) -C streams/
+	$(MAKE) -C structs/
 	$(MAKE) -C stack/
 
 clean:
-	$(MAKE) -C matrix/ clean
+	$(MAKE) -C streams/ clean
+	$(MAKE) -C structs/ clean
 	$(MAKE) -C stack/ clean
