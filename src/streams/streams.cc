@@ -1,6 +1,6 @@
-// NOTE: Instead of .c files, C++ uses .cpp files
-// NOTE: Instead of .h files, C++ uses .hpp files
-//   However, .hpp extensions are not specified for C++ standard libraries
+// NOTE: Instead of .c files, C++ uses .cc files
+// NOTE: (In some circles, .cpp and .hpp are used, but we are following Google conventions)
+//   However, .h extensions are not specified for C++ standard libraries
 
 // iostream: basic io streaming operations (cin, cout, etc.)
 #include <iostream>
