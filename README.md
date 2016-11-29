@@ -21,6 +21,7 @@ Complete the following exercises, saving your solutions in the indicated files.
     1. In a Jupyter notebook ```BLAS.ipynb```, explain the code in detail. How does this code compare in complexity to the code you wrote for Stack and Queue?
     1. Explain what the notation ```<type>``` means in, e.g., ```complex<long double>```.
     1. Are BLAS matrices row-major or column-major? How can you tell based on how the code is written?
+    1. Write a new program that uses BLAS to create a complex plane in a similar way to your python code from before. Print the resulting matrix of complex numbers to the screen in a pretty way to demonstrate that your code works.
 1. Examine the source code in ```src/matrix``` carefully. This code is a rudimentary implementation of what the BLAS matrix class may look like, using templates.
     1. In a Jupyter notebook ```Matrix.ipynb```, explain the code in detail.
     1. Explain what a template is in C++, and what it allows that is impossible in C.
