@@ -1,10 +1,10 @@
-# CS510 CW 12
+# CS510 CW 13
 
 **Author(s):** _\<your name(s)\>_
 
-[![Build Status](https://travis-ci.org/chapman-cs510-2016f/cw-12-YOURNAME.svg?branch=master)](https://travis-ci.org/chapman-cs510-2016f/cw-12-YOURNAME)
+[![Build Status](https://travis-ci.org/chapman-cs510-2016f/cw-13-YOURNAME.svg?branch=master)](https://travis-ci.org/chapman-cs510-2016f/cw-13-YOURNAME)
 
-**Due date:** 2016/11/29
+**Due date:** 2016/12/06
 
 ## Specification
 
@@ -16,35 +16,20 @@ Complete the following exercises, saving your solutions in the indicated files.
     * [C++ Tutorial](http://www.cplusplus.com/doc/tutorial/)
     * [C++ Essentials](https://tfetimes.com/wp-content/uploads/2015/09/CppEssentials.pdf)
     * [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
-1. Examine the source code in ```src/streams``` carefully. 
-    1. In a Jupyter notebook ```Streams.ipynb```, explain the key differences that you see in the file between C++ and C.
-    1. Describe the concept of a namespace, and what :: means.
-    1. Describe how streams do things differently. In particular, explain the differences in reading from command line arguments, reading and writing to a file, printing to standard output, and printing to standard error.
-    1. Explain how a C++ string differs from a C string.
-    1. Compile and run the code, and make sure you understand the output.
-1. Examine the source code in ```src/structs``` carefully.
-    1. In a Jupyter notebook ```Structs.ipynb```, explain how this code differs from the equivalent C implementation that you examined in a previous class. Be specific and detailed.
-    1. Explain what a #define guard does, and why it could be useful
-    1. Explain what type overloading is, and why it could be useful
-    1. Explain the difference between "pass by reference" in C and "pass by reference" in C++.
-    1. Explain what operator type overloading is, and why it could be useful
-    1. Finish implementing the needed functions, and make sure your code compiles and runs. Explain the output carefully.
-1. Examine the source code in ```src/stack``` carefully. 
-    1. In a Jupyter notebook ```Stack.ipynb```, describe how the ```Stack``` type is defined and how it works in detail. Explain in particular the differences between this implementation and the C implementation that you have already coded. 
-    1. Explain the difference between a class and a struct
-    1. Explain what private and public do
-    1. Explain what size_t is used for
-    1. Explain why this code avoids the use of C pointers
-    1. Explain what new and delete do in C++, and how they relate to what you have done in C
-    1. Explain what a memory leak is, and what you should do to avoid it
-    1. Explain what a unique_ptr is and how it relates to both new and C pointers
-    1. Explain what a list initializer does
-    1. Explain what the "Rule of Zero" is, and how it relates to the "Rule of Three"
-    1. Finish implementing the missing functions in a sensible way. Be sure to fix the bug so that the depth field is used properly.
-    1. Make sure that ```test_struct``` in the ```test/``` folder compiles and runs correctly after you are finished implementing ```Struct```.
-    1. Use [valgrind](http://valgrind.org/docs/manual/quick-start.html) to verify that you have no memory leaks in your working program. (You will have to edit the primary Makefile to change the CXXFLAGS to enable -g for debugging.)
-    1. Fix the code so that it throws an exception properly if one tries to pop an empty stack.
-    1. Fix the code so that depth cannot increase beyond the [numerical limit for size_t](http://en.cppreference.com/w/cpp/types/numeric_limits/max). Create a new method ```bool full()``` that checks if your Stack is full. Throw an exception properly if you try to push an item onto a full stack.
+1. In this assignment, you will look briefly at the set of [Boost C++ Libraries](http://www.boost.org/users/history/version_1_62_0.html). In particular, you will use the [uBLAS (Basic Linear Algebra Library)](http://www.boost.org/doc/libs/1_62_0/libs/numeric/ublas/doc/index.html), which is a standard workhorse for numerical programming in C++. Skim through the documentation to get a feel for the large range of functionality that these libraries provide.
+1. Examine the source code in ```src/blas``` carefully. 
+    1. In a Jupyter notebook ```BLAS.ipynb```, explain the code in detail. How does this code compare in complexity to the code you wrote for Stack and Queue?
+    1. Explain what the notation ```<type>``` means in, e.g., ```complex<long double>```.
+    1. Are BLAS matrices row-major or column-major? How can you tell based on how the code is written?
+1. Examine the source code in ```src/matrix``` carefully. This code is a rudimentary implementation of what the BLAS matrix class may look like, using templates.
+    1. In a Jupyter notebook ```Matrix.ipynb```, explain the code in detail.
+    1. Explain what a template is in C++, and what it allows that is impossible in C.
+    1. Explain what operator-overloading is, and which operators are overloaded here.
+    1. Create a new method ```print()``` that prints the matrix to the screen. You may use the code in ```test_matrix.cc``` to get you started. Refactor ```test_matrix.cc``` to use your new method.
+    1. Create a new method that multiplies two matrices together, by overloading the * operator. Test this method in ```test_matrix.cc```.
+    1. Create a new method that adds a scalar value of type T to the matrix element-by-element, by overloading the + operator. Test this method in ```test_matrix.cc```.
+    1. Create a new method ```save(string filename)``` that saves the matrix to a comma-separated-value (CSV) file, with one row per line.
+    1. Use [valgrind](http://valgrind.org/docs/manual/quick-start.html) to verify that you have no memory leaks in your final working program. (You will have to edit the primary Makefile to change the CXXFLAGS to enable -g for debugging.)
 
 
 ## Assessment

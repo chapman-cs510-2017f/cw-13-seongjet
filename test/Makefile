@@ -1,12 +1,12 @@
-all: test_stack
+all: test_matrix
 
-test_stack: ../src/stack/stack.o
+test_matrix: ../src/matrix/matrix.o
 
 test: all
-	./test_stack
+	./test_matrix
 
 clean:
-	$(MAKE) -C ../src/stack/ clean
+	$(MAKE) -C ../src/matrix/ clean
 
 cleaner: clean
-	rm -f ./test_stack
+	rm -f ./test_matrix
