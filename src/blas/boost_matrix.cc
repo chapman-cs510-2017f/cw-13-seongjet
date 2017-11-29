@@ -20,7 +20,7 @@ int main(int argc, char **argv)
       m(r,c) = 3 * r + c;
 
       // complex numbers designating rows and cols
-      n(r,c) = r + c * 1i;
+      n(r,c) = r + c * std::complex<long double>(0,1); 
 
       // elementwise square of n
       o(r,c) = std::pow(n(r,c), 2);

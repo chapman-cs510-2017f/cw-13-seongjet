@@ -3,6 +3,7 @@
 
 // Most useful standard library implementation of a vector
 // Seasoned C++ programmers swear by this data structure
+// as the swiss-army-knife that one should almost always use
 #include <vector>
 
 // A template allows an arbitrary type T to be passed into a class as a
@@ -12,6 +13,8 @@ template <typename T> class Matrix {
         // Implementation section
         //
         // A matrix is a vector of vectors, each storing type T
+        // This is similar to the Python implementation of a matrix as a
+        // list of lists, which we used for the complex plane before numpy
         std::vector<std::vector<T> > mat;
         // Also store the number of rows and columns 
         unsigned int rows;
@@ -46,9 +49,9 @@ template <typename T> class Matrix {
 
 
 // C++ requires seeing both the source code and declarations simultaneously
-// when dealing with templates (arbitrary types T)
+// when dealing with templates (involving arbitrary types T)
 // This requires the header to include the source, and vice versa, which is 
-// one major reason for the #ifdef conventions to prevent infinite include loops
+// one major reason for the #ifndef conventions to prevent infinite include loops
 #include "matrix.cc"
 
 #endif // CW13_MATRIX_H_ 

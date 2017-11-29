@@ -15,6 +15,7 @@
 template<typename T> 
 Matrix<T>::Matrix(unsigned int _rows, unsigned int _cols, const T& _initial) {
     // use vector method to resize outer vector of rows to length _rows
+    // this is like preallocating a numpy array of zeros of the proper length
     mat.resize(_rows);
     for (unsigned int i=0; i<mat.size(); i++) {
         // for each row, resize to length _cols of columns
@@ -22,15 +23,24 @@ Matrix<T>::Matrix(unsigned int _rows, unsigned int _cols, const T& _initial) {
         mat[i].resize(_cols, _initial);
     }
     // set private fields rows and cols properly
+    // These lines are why there is a convention of passing underscore-prefixed
+    // variable names to the constructor function, which each correspond to one
+    // of the attributes of the class needing to be set
     rows = _rows;
     cols = _cols;
 }
 
 // "Rule of 3" memory management:
 // 1) Copy-constructor
+//    This performs a "shallow copy" of the data in rhs, meaning that
+//    the instances are different, but the memory contained in this->mat
+//    is the same as the memory contained in rhs.mat at the end
 template<typename T> Matrix<T>::Matrix(const Matrix<T>& rhs) {
     // Simply set private fields according to fields
     // of existing Matrix<T> object
+    //
+    // Note the convention of calling the object on the right-hand-side
+    // of the operation "rhs" - this happens frequently in C++
     mat = rhs.mat;
     rows = rhs.get_rows();
     cols = rhs.get_cols();
@@ -42,9 +52,13 @@ template<typename T> Matrix<T>::Matrix(const Matrix<T>& rhs) {
 template<typename T> Matrix<T>::~Matrix() {}
 
 // 3) Assignment operator
+//    This performs a "deep copy" of the data in rhs, meaning that
+//    the instances are different, and all memory is copied to new
+//    and distinct memory locations
 template<typename T>
 Matrix<T>& Matrix<T>::operator=(const Matrix<T>& rhs) {
     // If assigning to itself, just return itself
+    // Note dereferencing of "this", since "this" is a pointer to the instance
     if (&rhs == this)
         return *this;
   
@@ -53,6 +67,8 @@ Matrix<T>& Matrix<T>::operator=(const Matrix<T>& rhs) {
     unsigned int new_cols = rhs.get_cols();
   
     // resize to new number of rows
+    // Note that in the constructor the field mat of the current instance
+    // is just available in the local scope. In Python, this would be self.mat
     mat.resize(new_rows);
     // resize each row to new number of cols
     for (unsigned int i=0; i<mat.size(); i++) {
@@ -67,6 +83,7 @@ Matrix<T>& Matrix<T>::operator=(const Matrix<T>& rhs) {
     }
   
     // store new number of rows and columns
+    // Note, in python this would be self.rows and self.cols
     rows = new_rows;
     cols = new_cols;
   
@@ -84,12 +101,17 @@ Matrix<T>& Matrix<T>::operator=(const Matrix<T>& rhs) {
 
 
 // Access individual elements (non-const: read + write)
+// Note that it returns a reference to the type stored in the matrix,
+// so it doesn't create a new copy of the accessed value
 template<typename T>
 T& Matrix<T>::operator() (const unsigned int &row, const unsigned int &col) {
     return this->mat[row][col];
 }
 
 // Access individual elements (const: read only)
+// Note this is almost identical to above, but is needed for when the constancy
+// of a read-only access must be guaranteed by the type signature of what uses
+// this method
 template<typename T>
 const T& Matrix<T>::operator() (const unsigned int &row, const unsigned int &col) 
 const {
@@ -121,7 +143,7 @@ unsigned int Matrix<T>::get_cols() const {
 template<typename T>
 Matrix<T> Matrix<T>::operator+(const Matrix<T>& rhs) {
     // Create new matrix to store result, initialize to zero
-    Matrix result(rows, cols, 0.0);
+    Matrix<T> result(rows, cols, (T)0.0);
   
     // Add each matrix element-by-element
     for (unsigned int i=0; i<rows; i++) {

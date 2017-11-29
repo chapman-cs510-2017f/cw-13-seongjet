@@ -1,10 +1,8 @@
 # CS510 CW 13
 
-**Author(s):** _\<your name(s)\>_
+**Author(s):** **CHANGEME**
 
-[![Build Status](https://travis-ci.org/chapman-cs510-2016f/cw-13-YOURNAME.svg?branch=master)](https://travis-ci.org/chapman-cs510-2016f/cw-13-YOURNAME)
-
-**Due date:** 2016/12/06
+[![Build Status](https://travis-ci.org/chapman-cs510-2017f/cw-13-YOURNAME.svg?branch=master)](https://travis-ci.org/chapman-cs510-2017f/cw-13-YOURNAME)
 
 ## Specification
 
