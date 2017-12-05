@@ -4,7 +4,7 @@ test_matrix: ../src/matrix/matrix.o
 
 test: all
 	./test_matrix
-	valgrind --leak-check=yes ./test_matrix
+	#valgrind --leak-check=yes ./test_matrix
 
 clean:
 	$(MAKE) -C ../src/matrix/ clean
