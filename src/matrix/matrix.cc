@@ -4,6 +4,13 @@
 
 // include the header declarations
 #include "matrix.h"
+// iostream: basic io streaming operations (cin, cout, etc.)
+#include <iostream>
+#include <string>
+// sstream: stringstream, which converts strings to streams 
+#include <sstream>
+// fstream: filestream, read and write files easily as streams
+#include <fstream>
 
 //*************
 //
@@ -155,4 +162,70 @@ Matrix<T> Matrix<T>::operator+(const Matrix<T>& rhs) {
     return result;
 }
 
+//*********************
+//
+// PRINT MATRIX
+//
+//*********************
+template<typename T>
+void Matrix<T>::print() {
+    for (unsigned int i=0; i<rows; i++) {
+        for (unsigned int j=0; j<cols; j++) {
+                std::cout << this->mat[i][j]<<"\t";
+        }
+        std::cout << std::endl; //add a line
+    }
+}
+
+//*********************
+//
+// Adds scalar value of type T to the matrix element-by-element, 
+//
+//*********************
+template<typename T>
+Matrix<T> Matrix<T>::operator+(const T& scalar) {
+    // Create new matrix to store result, initialize to zero
+    Matrix<T> result(rows, cols, (T)0.0);
+  
+    // Add each matrix element-by-element
+    for (unsigned int i=0; i<rows; i++) {
+        for (unsigned int j=0; j<cols; j++) {
+            result(i,j) = this->mat[i][j] + scalar;
+      }
+    }
+  
+    return result;
+}
+
+//*********************
+//
+// SAVE MATRIX TO a CSV file
+//
+//*********************
+template<typename T>
+unsigned int Matrix<T>::save(std::string filename) {
+    std::ofstream myfile;
+    
+    myfile.open(filename);
+    
+    if (!myfile.is_open()){
+        std::cerr << "Error: Could not open file" << std::endl;
+        return -1;
+    }
+    
+    for (unsigned int i=0; i<rows; i++) {
+        for (unsigned int j=0; j<cols; j++) {
+            T val = this->mat[i][j];
+            //std::cout << val;
+            // myfile << std::to_string(this->mat[i,j]); //can't use this because T type not specific
+             myfile <<val<< ",";
+         }
+         myfile << std::endl;
+    }
+    myfile.close();
+    return 0;
+}
+
+
+//Matrix<T>::Matrix(unsigned int _rows, unsigned int _cols, const T& _initial) {
 #endif // CW13_MATRIX_CPP_
